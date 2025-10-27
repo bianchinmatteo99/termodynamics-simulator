@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulatore Termodinamica — p–V + Pistone</title>
+
+  <!-- CDN librerie -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.plot.ly/plotly-2.24.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Laboratorio di Termodinamica</h1>
+  </header>
+
+  <main class="container">
+    <!-- Sinistra: grafico p-V -->
+    <section class="panel left">
+      <div class="panel-header">
+        <h2>Grafico p–V</h2>
+        <div class="small">Unità visualizzate: <strong>kPa · L</strong></div>
+      </div>
+
+      <div id="plot" class="plot-area"></div>
+      <br/>
+      <!-- slider temporale -->
+      <div class="time-slider">
+
+        <div class="small">Timeline</div>
+        <input id="timeSlider" type="range" min="0" max="1" step="0.01" value="0">
+        <div class="slider-labels">
+          <span id="timeLabel">0% / 100%</span>
+          <div class="controls-inline">
+            <button id="playBtn">Play</button>
+            <button id="pauseBtn">Pausa</button>
+            <button id="resetBtn">Reset</button>
+            <label><input id="loopChk" type="checkbox"> Loop</label>
+            <label>Velocità <input id="speedRng" type="range" min="0.2" max="4" step="0.1" value="1"></label>
+          </div>
+        </div>
+      </div>
+      <br/>
+      <p id="rendimento">La trasformazione non è ciclica.</p>
+
+    </section>
+
+    <!-- Destra: simulazione p5 -->
+    <section class="panel right">
+      <div class="panel-header">
+        <h2>Simulazione</h2>
+      </div>
+
+      <div id="simulator-holder"></div>
+      <div id="energyCanvas" class="plot-area"></div>
+    </section>
+
+    <!-- Bottom: controlli / form / tabella -->
+    <section id="controls" class="panel bottom">
+      <h2>Trasformazioni</h2>
+
+      <form id="formTrasf">
+        <div class="riga form-inline">
+          <label>Gradi di libertà <input type="number" id="freedom" value="3" step="1"></label>
+          <label>n (mol) <input type="number" id="nMol" value="1" step="0.1"></label>
+          <label>Campionamento al secondo <input type="number" id="sps" value="60" step="10"></label>
+          <button type="button" id="btnAggiornaGlobali">Aggiorna proprietà globali</button>
+        </div>
+
+
+        <div class="riga form-inline">
+          <label>P₁ (kPa) <input type="number" id="P1" value="100"></label>
+          <label>V₁ (L) <input type="number" id="V1" value="2"></label>
+          <label>T₁ (K) <input type="number" id="T1" value=""></label>
+        </div>
+
+        <div class="riga form-inline">
+          <label>P₂ (kPa) <input type="number" id="P2" value=""></label>
+          <label>V₂ (L) <input type="number" id="V2" value=""></label>
+          <label>T₂ (K) <input type="number" id="T2" value=""></label>
+          <label>Tipo:
+            <select id="tipoTrasf"></select>
+          </label>
+          <label>Durata (s) <input type="number" id="durata" value="3"></label>
+        </div>
+
+
+        <div class="riga form-inline">
+          <button type="button" id="btnAggiungi">Aggiungi trasformazione</button>
+          <button type="button" id="btnUndo">Annulla ultima</button>
+          <button type="button" id="btnResetTrasf">Reset</button>
+        </div>
+      </form>
+
+      <table id="tabellaTrasf">
+        <thead>
+          <tr>
+            <th>Stato iniziale</th>
+            <th>Trasformazione</th>
+            <th>Stato finale</th>
+            <th>Energia</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Script modulari -->
+  <script src="js/physics.js"></script>
+  <script src="js/graph.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/energyPanel.js"></script>
+  <script src="js/transformUI.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
