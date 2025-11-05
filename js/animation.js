@@ -186,9 +186,9 @@ const Animation = (() => {
         s.text("VOLUME: " + V.toFixed(2) + " L", 300, 80);
 
         // Heat transfer visualization
-        if (Q > 1e-9) {
+        if (Q > AppState.tolerance) {
           drawFlames(s, Q, 300, 360);
-        } else if (Q < -1e-9) {
+        } else if (Q < -AppState.tolerance) {
           drawIce(s, Q, 300, 360);
         } else {
           s.fill(180);

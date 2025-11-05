@@ -87,8 +87,8 @@ header{
 }
 
 .form-inline input,
-.form-inline select,
-.form-inline button {
+.form-inline select {
+  max-width: 150px;
   padding: 6px 8px;
   border-radius: 6px;
   border: 1px solid #ddd;
@@ -96,7 +96,11 @@ header{
 }
 
 .form-inline button {
-  cursor: pointer
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: white
 }
 
 /* table */
@@ -196,5 +200,10 @@ header{
     display: flex;
     align-items: center;
     height: 300px;
+    justify-content: center;
+}
+#simulationHolder {
+    display: flex;
+    align-items: center;
     justify-content: center;
 }

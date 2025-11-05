@@ -89,7 +89,7 @@ const EnergyPanel = (() => {
       const arrowSize = 15 + 5 * pulse;
 
       // Freccia Q ↔ U
-      if (Math.abs(curData.Qdot) > 1e-6) {
+      if (Math.abs(curData.Qdot) > AppState.tolerance) {
         p.stroke(curData.Qdot > 0 ? "red" : "blue");
         p.strokeWeight(3);
         if (curData.Qdot > 0) {
@@ -100,7 +100,7 @@ const EnergyPanel = (() => {
       }
 
       // Freccia U ↔ W
-      if (Math.abs(curData.Wdot) > 1e-6) {
+      if (Math.abs(curData.Wdot) > AppState.tolerance) {
         p.stroke(curData.Wdot > 0 ? "green" : "orange");
         p.strokeWeight(3);
         if (curData.Wdot > 0) {

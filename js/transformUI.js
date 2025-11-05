@@ -62,10 +62,12 @@ const TransformUI = (function () {
     const n = parseFloat(inputN.val());
     const gamma = (freedom + 2) / freedom;
     const sps = parseInt(inputSPS.val()) || 60;
+    const tolerance = parseFloat($("#tolleranza").val()) || 1e-3;
 
     // Aggiorna lo stato globale
     window.AppState.gasparams = { freedom, n, gamma };
     window.AppState.sps = sps;
+    window.AppState.tolerance = tolerance;
     resetAll();
   }
 

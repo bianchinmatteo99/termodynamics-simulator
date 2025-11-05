@@ -11,6 +11,7 @@ $(function () {
     energyPath: [],
     gasparams: { freedom: 3, n: 1, gamma: 5 / 3 },
     sps: 60,
+    tolerance: 1e-3,
     maxvalues: { V: 1, T: 500, P: 100 },
   };
 
