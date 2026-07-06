@@ -4,7 +4,7 @@
 
 ## 🎯 Obiettivo
 
-Questo progetto è un'applicazione web didattica progettata per insegnanti e studenti di fisica e chimica. Permette di:
+Questo progetto è un'applicazione web didattica progettata per insegnanti e studenti di fisica e chimica. Permette di: 
 
 - **Visualizzare** i diagrammi p–V (pressione-volume) di processi termodinamici
 - **Simulare** il comportamento di un gas ideale durante diverse trasformazioni
